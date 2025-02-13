@@ -1,0 +1,59 @@
+Armazenamento de Eventos em Tempo Real
+
+{
+  "evento_id": "event123",
+  "tipo": "acidente",
+  "localizacao": {
+    "latitude": -23.5505,
+    "longitude": -46.6333
+  },
+  "data": "2023-10-01T14:30:00Z",
+  "descrição": "Acidente envolvendo dois carros na Avenida Paulista.",
+  "serveridade": "alta",
+  "reportado_por": "user456"
+}
+
+Armazenamento de Alertas e Notificações
+
+{
+  "alerta_id": "alert321",
+  "tipo": "congestionamento",
+  "localizacao": {
+    "latitude": -23.5505,
+    "longitude": -46.6333
+  },
+  "data": "2023-10-01T14:40:00Z",
+  "descrição": "Congestionamento de 5km na Avenida Paulista.",
+  "serveridade": "media"
+}
+
+Armazenamento de Dados de Usuários e Preferências
+
+{
+  "user_id": "user456",
+  "nome": "Maria Oliveira",
+  "email": "maria.oliveira@example.com",
+  "localizacao": {
+    "latitude": -23.5635,
+    "longitude": -46.6523
+  },
+  "notificacao_preferencia": {
+    "tipos": ["acidente", "congestionamento", "qualidade_do_ar"],
+    "frequencia": "imediato"
+  }
+}
+
+Consultas Geográficas
+
+{
+  "query": {
+    "localizacao": {
+      "near": {
+        "latitude": -23.5505,
+        "longitude": -46.6333,
+        "maxDistance": 5000
+      }
+    },
+    "tipos": ["acidente", "congestionamento"]
+  }
+}
