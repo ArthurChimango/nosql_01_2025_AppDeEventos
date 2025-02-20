@@ -1,0 +1,73 @@
+1. Cadastro e Gerenciamento de Eventos
+Descrição:
+Essa operação é a base do sistema, pois permite o registro, atualização e consulta de eventos. Sem ela, não há dados para notificar, analisar ou monitorar. É essencial para que autoridades e cidadãos possam registrar ocorrências relevantes, como acidentes, desastres naturais ou alertas de segurança.
+
+Variáveis:
+-id_evento: Identificador único do evento.
+
+Função: Permite localizar e diferenciar eventos no banco de dados.
+
+-tipo: Categoria do evento (ex.: "Chuva Intensa", "Acidente de Trânsito").
+
+Função: Classifica o evento para facilitar filtros e análises.
+
+-data: Data em que o evento ocorreu ou foi registrado.
+
+Função: Define o momento do evento para contextualização histórica.
+
+-endereço: Localização do evento (bairro, CEP, rua).
+
+Função: Permite geolocalização e direcionamento de recursos.
+
+-descricao: Detalhes sobre o evento.
+
+Função: Fornece informações adicionais para compreensão do ocorrido.
+
+-autoridade_responsavel: Entidade responsável pelo evento (ex.: Defesa Civil, Polícia).
+
+Função: Define quem deve agir ou ser contatado sobre o evento.
+
+-severidade: Nível de gravidade (Baixa, Moderada, Alta, Crítica).
+
+Função: Prioriza a resposta e alocação de recursos.
+
+-cadastrado_por: Indica se o evento foi registrado por uma autoridade ou cidadão.
+
+Função: Ajuda a rastrear a origem do registro e sua confiabilidade.
+
+Relevância:
+-Centraliza todas as informações sobre eventos, permitindo que o sistema funcione de forma organizada.
+
+-Facilita a integração com outras operações, como notificações e relatórios.
+
+-Permite a classificação e priorização de eventos com base na severidade e localização.
+
+2. Notificações e Alertas
+Descrição:
+Essa operação é crucial para a comunicação entre o sistema e os usuários. Ela garante que as informações sobre eventos cheguem rapidamente aos cidadãos e autoridades, permitindo respostas ágeis e eficazes. Sem notificações, o sistema perderia sua função principal de alerta e prevenção.
+
+Variáveis:
+-id_notificacao: Identificador único da notificação.
+
+Função: Permite rastrear e gerenciar notificações enviadas.
+
+-destinatario: Identificador do usuário ou grupo que receberá a notificação.
+
+Função: Define o público-alvo da mensagem.
+
+-mensagem: Conteúdo da notificação (ex.: "Alerta: Tempestade prevista para as próximas horas").
+
+Função: Transmite a informação relevante de forma clara e direta.
+
+-data_hora: Momento exato em que a notificação foi enviada.
+
+Função: Registra o tempo de envio para análise de eficiência.
+
+Relevância:
+-Garante que os usuários recebam alertas em tempo real sobre eventos relevantes.
+
+-Reduz riscos ao informar cidadãos sobre perigos iminentes (ex.: alagamentos, tempestades).
+
+-Permite a integração com serviços de emergência, direcionando recursos para áreas críticas.
+
+-Facilita a transparência e a confiança no sistema, pois os usuários se sentem informados e protegidos.
