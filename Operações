@@ -1,33 +1,3 @@
-Documentação do Sistema de Gestão de Eventos
-
-Descrição Geral
-
-O aplicativo tem como objetivo permitir o registro e a notificação de eventos importantes que ocorrem na cidade, como acidentes, eventos climáticos, alertas de segurança e outros acontecimentos relevantes. O sistema será baseado em um banco de dados NoSQL, permitindo flexibilidade na estruturação e recuperação dos dados.
-
-Estrutura de Dados
-
-Como o sistema utilizará um banco NoSQL, os dados serão organizados de forma não relacional, utilizando documentos JSON para armazenar as informações. Abaixo estão as principais coleções e suas respectivas variáveis.
-Principais Funcionalidades:
-
--Cadastro e Gerenciamento de Eventos: Permite a criação e edição de alertas com informações detalhadas.
-
--Gestão de Notificações: Controle do envio de alertas para cidadãos e autoridades.
-
--Integração com Serviços de Emergência: Possibilita o contato direto com bombeiros, polícia e equipes de resgate.
-
--Notificações e Alertas: Envio de comunicados automáticos para usuários cadastrados.
-
--Relatórios e Análises: Geração de relatórios sobre a frequência e impacto dos eventos registrados.
-
--Cadastro e Gestão de Usuários: Permite o gerenciamento de cidadãos e autoridades no sistema.
-
--Monitoramento de Eventos em Tempo Real: Exibição de eventos ativos no mapa da cidade.
-
--Histórico de Ocorrências: Armazena eventos passados para consulta e análise.
-
--Registro de Eventos por Cidadãos: Permite que cidadãos registrem eventos relevantes.
-
--Classificação de Severidade dos Eventos: Identificação do nível de impacto dos eventos registrados.
 
 1. Cadastro de Usuários
 
@@ -66,7 +36,7 @@ telefone: Número de telefone para comunicação.
 
 Operação: Criar, atualizar e consultar eventos.
 
-Estrutura de Dados:
+Documento:
 
 {
   "id_evento": "ev123",  
@@ -102,7 +72,7 @@ cadastrado_por: Identifica se o evento foi cadastrado por uma autoridade ou um c
 
 Operação: Enviar e registrar notificações.
 
-Estrutura de Dados:
+Documento:
 
 {
   "id_notificacao": "notif789",  
@@ -123,7 +93,7 @@ data_hora: Momento exato em que a notificação foi enviada.
 
 Operação: Gerar relatórios de eventos e participação.
 
-Estrutura de Dados:
+Documento:
 
 {
   "id_relatorio": "rep001",  
@@ -148,7 +118,7 @@ avaliacao_usuarios: Média das notas dadas pelos usuários quanto à utilidade e
 
 Operação: Consultar eventos passados e gerar análises.
 
-Estrutura de Dados:
+Documento:
 
 {
   "id_ocorrencia": "hist202",  
@@ -169,6 +139,7 @@ descricao: Relato detalhado sobre o evento registrado.
 autoridade_responsavel: Entidade que registrou e acompanhou o evento.
 
  Integração com Serviços de Emergência
+Documento:
 
 {
   "servico_id": 201,
