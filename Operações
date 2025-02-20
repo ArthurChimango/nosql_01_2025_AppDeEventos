@@ -1,59 +1,195 @@
-Armazenamento de Eventos em Tempo Real
+Documentação do Sistema de Gestão de Eventos
+
+Descrição Geral
+
+O aplicativo tem como objetivo permitir o registro e a notificação de eventos importantes que ocorrem na cidade, como acidentes, eventos climáticos, alertas de segurança e outros acontecimentos relevantes. O sistema será baseado em um banco de dados NoSQL, permitindo flexibilidade na estruturação e recuperação dos dados.
+
+Estrutura de Dados
+
+Como o sistema utilizará um banco NoSQL, os dados serão organizados de forma não relacional, utilizando documentos JSON para armazenar as informações. Abaixo estão as principais coleções e suas respectivas variáveis.
+Principais Funcionalidades:
+
+-Cadastro e Gerenciamento de Eventos: Permite a criação e edição de alertas com informações detalhadas.
+
+-Gestão de Notificações: Controle do envio de alertas para cidadãos e autoridades.
+
+-Integração com Serviços de Emergência: Possibilita o contato direto com bombeiros, polícia e equipes de resgate.
+
+-Notificações e Alertas: Envio de comunicados automáticos para usuários cadastrados.
+
+-Relatórios e Análises: Geração de relatórios sobre a frequência e impacto dos eventos registrados.
+
+-Cadastro e Gestão de Usuários: Permite o gerenciamento de cidadãos e autoridades no sistema.
+
+-Monitoramento de Eventos em Tempo Real: Exibição de eventos ativos no mapa da cidade.
+
+-Histórico de Ocorrências: Armazena eventos passados para consulta e análise.
+
+-Registro de Eventos por Cidadãos: Permite que cidadãos registrem eventos relevantes.
+
+-Classificação de Severidade dos Eventos: Identificação do nível de impacto dos eventos registrados.
+
+1. Armazenamento de Eventos
+
+Operação: Criar, atualizar e consultar eventos.
+
+Estrutura de Dados:
 
 {
-  "evento_id": "event123",
-  "tipo": "acidente",
-  "localizacao": {
-    "latitude": -23.5505,
-    "longitude": -46.6333
-  },
-  "data": "2023-10-01T14:30:00Z",
-  "descrição": "Acidente envolvendo dois carros na Avenida Paulista.",
-  "serveridade": "alta",
-  "reportado_por": "user456"
+  "id_evento": "ev123",  
+  "tipo": "Chuva Intensa",  
+  "data": "2024-09-15",  
+  "endereço": {
+    "bairro": "Centro",
+    "cep": "12345-678",
+    "rua": "Rua Principal"Cidadão", },  
+  "descricao": "Alerta de chuva intensa com risco de alagamentos.",  
+  "autoridade_responsavel": "Defesa Civil",
+  "severidade": "Alta",  
+  "cadastrado_por": "Cidadão"  
 }
 
-Armazenamento de Alertas e Notificações
+id_evento: Identificador único do evento.
+
+tipo: Categoria do evento (exemplo: acidente, desastre natural, alerta de segurança).
+
+data: Data programada ou registrada do evento.
+
+localizacao: Local onde o evento foi registrado.
+
+descricao: Breve explicação sobre o evento.
+
+autoridade_responsavel: Entidade ou pessoa responsável pelo evento.
+
+severidade: Nível de gravidade do evento (Baixa, Moderada, Alta, Crítica).
+
+cadastrado_por: Identifica se o evento foi cadastrado por uma autoridade ou um cidadão.
+
+2. Notificações e Alertas
+
+Operação: Enviar e registrar notificações.
+
+Estrutura de Dados:
 
 {
-  "alerta_id": "alert321",
-  "tipo": "congestionamento",
-  "localizacao": {
-    "latitude": -23.5505,
-    "longitude": -46.6333
-  },
-  "data": "2023-10-01T14:40:00Z",
-  "descrição": "Congestionamento de 5km na Avenida Paulista.",
-  "serveridade": "media"
+  "id_notificacao": "notif789",  
+  "destinatario": "id_usuario",  
+  "mensagem": "Alerta: Tempestade prevista para as próximas horas. Evite áreas de risco.",  
+  "data_hora": "2024-09-10T10:00:00Z"  
 }
 
-Armazenamento de Dados de Usuários e Preferências
+id_notificacao: Código exclusivo da notificação.
+
+destinatario: Pessoa ou grupo que receberá a notificação.
+
+mensagem: Conteúdo da notificação enviada.
+
+data_hora: Momento exato em que a notificação foi enviada.
+
+3. Relatórios e Análises
+
+Operação: Gerar relatórios de eventos e participação.
+
+Estrutura de Dados:
 
 {
-  "user_id": "user456",
-  "nome": "Maria Oliveira",
-  "email": "maria.oliveira@example.com",
-  "localizacao": {
-    "latitude": -23.5635,
-    "longitude": -46.6523
-  },
-  "notificacao_preferencia": {
-    "tipos": ["acidente", "congestionamento", "qualidade_do_ar"],
-    "frequencia": "imediato"
+  "id_relatorio": "rep001",  
+  "id_evento": "ev123",  
+  "impacto": "Alagamento em vias principais",  
+  "numero_alertas": 150,  
+  "avaliacao_usuarios": 4.7  
+}
+
+id_relatorio: Código único do relatório gerado.
+
+id_evento: Evento sobre o qual o relatório foi gerado.
+
+impacto: Descrição dos efeitos do evento registrado.
+
+numero_alertas: Quantidade de notificações enviadas relacionadas ao evento.
+
+avaliacao_usuarios: Média das notas dadas pelos usuários quanto à utilidade e precisão do alerta.
+
+4. Cadastro de Usuários
+
+Operação: Criar e gerenciar usuários do sistema.
+
+Estrutura de Dados:
+
+{
+  "id_usuario": "user123",  
+  "Dados_pessoais":{
+    "Nome":"Fulano",
+    "idade": 30,
+    "cpf":123.456.789-00,
+    "endereço": {
+        "bairro": "Centro",
+        "cep": "12345-678",
+        "rua": "Rua Principal"Cidadão", } 
+    "email": "joao@email.com",  
+    "telefone": "+55 11 99999-9999"  
+    }
   }
-}
 
-Consultas Geográficas
+id_usuario: Identificador único do usuário.
+
+dados: contem todas as informações pessoais do cidadão ou entidade.
+
+localização: vai conter o endereço completo da entidade que esta cadastrando.
+
+tipo_usuario: Define o papel do usuário dentro do sistema.
+
+email: Endereço eletrônico para contato.
+
+telefone: Número de telefone para comunicação.
+
+5. Histórico de Ocorrências
+
+Operação: Consultar eventos passados e gerar análises.
+
+Estrutura de Dados:
 
 {
-  "query": {
-    "localizacao": {
-      "near": {
-        "latitude": -23.5505,
-        "longitude": -46.6333,
-        "maxDistance": 5000
-      }
-    },
-    "tipos": ["acidente", "congestionamento"]
-  }
+  "id_ocorrencia": "hist202",  
+  "id_evento": "ev123",  
+  "data_registro": "2024-08-30",  
+  "descricao": "Relatório final sobre os impactos da tempestade.",  
+  "autoridade_responsavel": "Defesa Civil"  
 }
+
+id_ocorrencia: Identificador único do histórico de ocorrência.
+
+id_evento: Evento vinculado à ocorrência.
+
+data_registro: Data do registro da ocorrência.
+
+descricao: Relato detalhado sobre o evento registrado.
+
+autoridade_responsavel: Entidade que registrou e acompanhou o evento.
+
+Processo do Usuário
+
+Criação e Configuração de Evento:
+
+Autoridades ou cidadãos podem registrar um novo evento e definir detalhes como tipo, data e impacto potencial.
+
+Envio de Alertas:
+
+O sistema envia notificações automáticas para usuários cadastrados em áreas afetadas.
+
+Consulta e Monitoramento:
+
+Usuários podem visualizar eventos ativos e receber atualizações.
+
+Geração de Relatórios:
+
+Após o evento, relatórios são gerados para análise do impacto e da eficácia da resposta.
+
+Acesso ao Histórico:
+
+Consultar registros passados para análise e planejamento de futuras emergências.
+
+Considerações Finais
+
+O sistema proporciona uma solução eficiente para alertas e emergências, garantindo comunicação rápida e acessível entre autoridades e cidadãos, reduzindo riscos e otimizando respostas a incidentes.
+
