@@ -29,7 +29,40 @@ Principais Funcionalidades:
 
 -Classificação de Severidade dos Eventos: Identificação do nível de impacto dos eventos registrados.
 
-1. Armazenamento de Eventos
+1. Cadastro de Usuários
+
+Operação: Criar e gerenciar usuários do sistema.
+
+Estrutura de Dados:
+
+{
+  "id_usuario": "user123",  
+  "Dados_pessoais":{
+    "Nome":"Fulano",
+    "idade": 30,
+    "cpf":123.456.789-00,
+    "endereço": {
+        "bairro": "Centro",
+        "cep": "12345-678",
+        "rua": "Rua Principal"Cidadão", } 
+    "email": "joao@email.com",  
+    "telefone": "+55 11 99999-9999"  
+    }
+  }
+
+id_usuario: Identificador único do usuário, pra localizar ele no banco.
+
+dados: contem todas as informações pessoais do cidadão ou entidade.
+
+localização: vai conter o endereço completo da entidade que esta cadastrando.
+
+tipo_usuario: Define o papel do usuário dentro do sistema.
+
+email: Endereço eletrônico para contato.
+
+telefone: Número de telefone para comunicação.
+
+2. Armazenamento de Eventos
 
 Operação: Criar, atualizar e consultar eventos.
 
@@ -65,7 +98,7 @@ severidade: Nível de gravidade do evento (Baixa, Moderada, Alta, Crítica).
 
 cadastrado_por: Identifica se o evento foi cadastrado por uma autoridade ou um cidadão.
 
-2. Notificações e Alertas
+3. Notificações e Alertas
 
 Operação: Enviar e registrar notificações.
 
@@ -86,7 +119,7 @@ mensagem: Conteúdo da notificação enviada.
 
 data_hora: Momento exato em que a notificação foi enviada.
 
-3. Relatórios e Análises
+4. Relatórios e Análises
 
 Operação: Gerar relatórios de eventos e participação.
 
@@ -110,38 +143,6 @@ numero_alertas: Quantidade de notificações enviadas relacionadas ao evento.
 
 avaliacao_usuarios: Média das notas dadas pelos usuários quanto à utilidade e precisão do alerta.
 
-4. Cadastro de Usuários
-
-Operação: Criar e gerenciar usuários do sistema.
-
-Estrutura de Dados:
-
-{
-  "id_usuario": "user123",  
-  "Dados_pessoais":{
-    "Nome":"Fulano",
-    "idade": 30,
-    "cpf":123.456.789-00,
-    "endereço": {
-        "bairro": "Centro",
-        "cep": "12345-678",
-        "rua": "Rua Principal"Cidadão", } 
-    "email": "joao@email.com",  
-    "telefone": "+55 11 99999-9999"  
-    }
-  }
-
-id_usuario: Identificador único do usuário.
-
-dados: contem todas as informações pessoais do cidadão ou entidade.
-
-localização: vai conter o endereço completo da entidade que esta cadastrando.
-
-tipo_usuario: Define o papel do usuário dentro do sistema.
-
-email: Endereço eletrônico para contato.
-
-telefone: Número de telefone para comunicação.
 
 5. Histórico de Ocorrências
 
@@ -166,6 +167,20 @@ data_registro: Data do registro da ocorrência.
 descricao: Relato detalhado sobre o evento registrado.
 
 autoridade_responsavel: Entidade que registrou e acompanhou o evento.
+
+ Integração com Serviços de Emergência
+
+{
+  "servico_id": 201,
+  "nome_servico": "Corpo de Bombeiros",
+  "contato": "193",
+  "evento_id": 1,
+  "data_hora_contato": "2023-10-15T14:40:00Z",
+  "status": "contatado"
+}
+
+serviço_Id : identificar unico daquele serviço
+nome_serviço: nome que sera mostrado para os usuarios.
 
 Processo do Usuário
 
