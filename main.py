@@ -7,7 +7,7 @@ from bson import ObjectId
 
 app = FastAPI()
 
-uri = "mongodb+srv://adm:1430@cluster0.puzceax.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+uri = "mongodb+srv://adm:.puzceax.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 client = MongoClient(uri)
 db = client["AppEventos"]
 
