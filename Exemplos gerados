@@ -1,0 +1,189 @@
+Usuario
+
+{
+    "id_usuario": "12345",
+    "nome": "João Silva",
+    "idade": 30,
+    "cpf": "123.456.789-00",
+    "endereco": {
+        "rua": "Rua das Flores",
+        "numero": 42,
+        "cidade": "São Paulo",
+        "estado": "SP"
+    },
+    "email": "joao.silva@example.com",
+    "telefone": "11987654321"
+}
+
+{
+    "id_usuario": "67890",
+    "nome": "Maria Oliveira",
+    "idade": 25,
+    "cpf": "987.654.321-00",
+    "endereco": {
+        "rua": "Avenida Brasil",
+        "numero": 100,
+        "cidade": "Rio de Janeiro",
+        "estado": "RJ"
+    },
+    "email": "maria.oliveira@example.com",
+    "telefone": "21987654321"
+}
+
+{
+    "id_usuario": "54321",
+    "nome": "Carlos Souza",
+    "idade": 40,
+    "cpf": "456.789.123-00",
+    "endereco": {
+        "rua": "Rua das Palmeiras",
+        "numero": 15,
+        "cidade": "Belo Horizonte",
+        "estado": "MG"
+    },
+    "email": "carlos.souza@example.com",
+    "telefone": "31987654321"
+}
+Evento
+
+{
+    "id_evento": "E123",
+    "tipo": "Incêndio",
+    "data": "2025-03-13",
+    "localizacao": {
+        "latitude": -23.5505,
+        "longitude": -46.6333
+    },
+    "descricao": "Incêndio em prédio residencial",
+    "autoridade_responsavel": "Bombeiros",
+    "severidade": "Alta",
+    "cadastrado_por": "12345"
+}
+
+{
+    "id_evento": "E456",
+    "tipo": "Enchente",
+    "data": "2025-03-14",
+    "localizacao": {
+        "latitude": -22.9068,
+        "longitude": -43.1729
+    },
+    "descricao": "Enchente na região central",
+    "autoridade_responsavel": "Defesa Civil",
+    "severidade": "Média",
+    "cadastrado_por": "67890"
+}
+
+{
+    "id_evento": "E789",
+    "tipo": "Deslizamento",
+    "data": "2025-03-15",
+    "localizacao": {
+        "latitude": -20.3194,
+        "longitude": -40.3378
+    },
+    "descricao": "Deslizamento de terra em área rural",
+    "autoridade_responsavel": "Defesa Civil",
+    "severidade": "Alta",
+    "cadastrado_por": "54321"
+}
+Notificacao
+
+{
+    "id_notificacao": "N678",
+    "destinatario": "12345",
+    "mensagem": "Incêndio reportado na sua área",
+    "data_hora": "2025-03-13T20:30:00Z"
+}
+
+{
+    "id_notificacao": "N679",
+    "destinatario": "67890",
+    "mensagem": "Enchente reportada na sua área",
+    "data_hora": "2025-03-14T10:15:00Z"
+}
+
+{
+    "id_notificacao": "N680",
+    "destinatario": "54321",
+    "mensagem": "Deslizamento reportado na sua área",
+    "data_hora": "2025-03-15T08:45:00Z"
+}
+Relatorio
+
+{
+    "id_relatorio": "R789",
+    "id_evento": "E123",
+    "impacto": "Alto",
+    "numero_alertas": 5,
+    "avaliacao_usuarios": 4.5
+}
+
+{
+    "id_relatorio": "R790",
+    "id_evento": "E456",
+    "impacto": "Médio",
+    "numero_alertas": 3,
+    "avaliacao_usuarios": 3.8
+}
+
+{
+    "id_relatorio": "R791",
+    "id_evento": "E789",
+    "impacto": "Alto",
+    "numero_alertas": 7,
+    "avaliacao_usuarios": 4.2
+}
+HistoricoOcorrencia
+
+{
+    "id_ocorrencia": "H456",
+    "id_evento": "E123",
+    "data_registro": "2025-03-13T20:35:00Z",
+    "descricao": "Incêndio controlado",
+    "autoridade_responsavel": "Bombeiros"
+}
+
+{
+    "id_ocorrencia": "H457",
+    "id_evento": "E456",
+    "data_registro": "2025-03-14T12:00:00Z",
+    "descricao": "Enchente monitorada",
+    "autoridade_responsavel": "Defesa Civil"
+}
+
+{
+    "id_ocorrencia": "H458",
+    "id_evento": "E789",
+    "data_registro": "2025-03-15T10:00:00Z",
+    "descricao": "Deslizamento contido",
+    "autoridade_responsavel": "Defesa Civil"
+}
+ServicoEmergencia
+
+{
+    "servico_id": 1,
+    "nome_servico": "Bombeiros",
+    "contato": "193",
+    "evento_id": "E123",
+    "data_hora_contato": "2025-03-13T20:25:00Z",
+    "status": "Atendido"
+}
+
+{
+    "servico_id": 2,
+    "nome_servico": "Defesa Civil",
+    "contato": "199",
+    "evento_id": "E456",
+    "data_hora_contato": "2025-03-14T09:30:00Z",
+    "status": "Pendente"
+}
+
+{
+    "servico_id": 3,
+    "nome_servico": "Samu",
+    "contato": "192",
+    "evento_id": "E789",
+    "data_hora_contato": "2025-03-15T08:00:00Z",
+    "status": "Atendido"
+}
