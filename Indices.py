@@ -1,0 +1,10 @@
+#Indices
+usuarios.create_index([("id_usuario", 1)], unique=True)
+eventos.create_index([("id_evento", 1)], unique=True)
+eventos.create_index([("tipo", 1)])
+eventos.create_index([("severidade", 1)])
+notificacoes.create_index([("data_hora", 1)])
+relatorios.create_index([("id_evento", 1)])
+relatorios.create_index([("numero_alertas", -1)])
+historico_ocorrencias.create_index([("id_evento", 1)])
+servicos_emergencia.create_index([("evento_id", 1)])
