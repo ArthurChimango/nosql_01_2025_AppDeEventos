@@ -7,9 +7,11 @@ from bson import ObjectId
 
 app = FastAPI()
 
-uri = "mongodb+srv://adm:.puzceax.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+
+uri = "mongodb+srv://adm:1430@cluster0.puzceax.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 client = MongoClient(uri)
 db = client["AppEventos"]
+
 
 usuarios = db["usuarios"]
 eventos = db["eventos"]
@@ -17,6 +19,7 @@ notificacoes = db["notificacoes"]
 relatorios = db["relatorios"]
 historico_ocorrencias = db["historico_ocorrencias"]
 servicos_emergencia = db["servicos_emergencia"]
+
 
 class Usuario(BaseModel):
     id_usuario: str
@@ -64,6 +67,7 @@ class ServicoEmergencia(BaseModel):
     evento_id: str
     data_hora_contato: str
     status: str
+
 
 @app.post("/usuarios/", response_model=Usuario)
 async def criar_usuario(usuario: Usuario):
@@ -129,6 +133,56 @@ async def deletar_evento(evento_id: str):
     if result.deleted_count == 0:
         raise HTTPException(status_code=404, detail="Evento não encontrado")
     return {"message": "Evento deletado com sucesso"}
+
+
+@app.get("/eventos_por_tipo/")
+async def eventos_por_tipo():
+    pipeline = [
+        {"$group": {"_id": "$tipo", "total": {"$sum": 1}}}
+    ]
+    resultado = eventos.aggregate(pipeline)
+    return list(resultado)
+
+@app.get("/usuarios_mais_de_30/")
+async def usuarios_mais_de_30():
+    pipeline = [
+        {"$match": {"idade": {"$gt": 30}}}
+    ]
+    resultado = usuarios.aggregate(pipeline)
+    return list(resultado)
+
+@app.get("/media_avaliacao_por_evento/")
+async def media_avaliacao_por_evento():
+    pipeline = [
+        {"$group": {"_id": "$id_evento", "media_avaliacao": {"$avg": "$avaliacao_usuarios"}}}
+    ]
+    resultado = relatorios.aggregate(pipeline)
+    return list(resultado)
+
+@app.get("/notificacoes_por_periodo/")
+async def notificacoes_por_periodo():
+    pipeline = [
+        {"$match": {"data_hora": {"$gte": "2024-09-10T00:00:00Z", "$lt": "2024-09-11T00:00:00Z"}}}
+    ]
+    resultado = notificacoes.aggregate(pipeline)
+    return list(resultado)
+
+@app.get("/eventos_por_severidade/")
+async def eventos_por_severidade():
+    pipeline = [
+        {"$group": {"_id": "$severidade", "total": {"$sum": 1}}}
+    ]
+    resultado = eventos.aggregate(pipeline)
+    return list(resultado)
+
+@app.get("/evento_mais_alertas/")
+async def evento_mais_alertas():
+    pipeline = [
+        {"$sort": {"numero_alertas": -1}},
+        {"$limit": 1}
+    ]
+    resultado = relatorios.aggregate(pipeline)
+    return list(resultado)
 
 if __name__ == "__main__":
     import uvicorn
