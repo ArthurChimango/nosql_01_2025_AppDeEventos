@@ -20,6 +20,16 @@ relatorios = db["relatorios"]
 historico_ocorrencias = db["historico_ocorrencias"]
 servicos_emergencia = db["servicos_emergencia"]
 
+# Criar índices
+usuarios.create_index([("id_usuario", 1)], unique=True)
+eventos.create_index([("id_evento", 1)], unique=True)
+eventos.create_index([("tipo", 1)])
+eventos.create_index([("severidade", 1)])
+notificacoes.create_index([("data_hora", 1)])
+relatorios.create_index([("id_evento", 1)])
+relatorios.create_index([("numero_alertas", -1)])
+historico_ocorrencias.create_index([("id_evento", 1)])
+servicos_emergencia.create_index([("evento_id", 1)])
 
 class Usuario(BaseModel):
     id_usuario: str
@@ -187,3 +197,6 @@ async def evento_mais_alertas():
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
+
+    resultado = eventos.find({"tipo": "incendio"}).explain()
+print(resultado)
