@@ -79,7 +79,7 @@ class Neo4jDriver:
 # Executando
 neo4j_uri = "bolt://localhost:7687"
 neo4j_user = "neo4j"
-neo4j_password = "32318240"
+neo4j_password = ""
 
 driver = Neo4jDriver(neo4j_uri, neo4j_user, neo4j_password)
 driver.criar_estrutura_inicial()
