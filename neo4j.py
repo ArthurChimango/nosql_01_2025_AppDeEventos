@@ -75,8 +75,6 @@ class Neo4jDriver:
             MERGE (e)-[:TEM_HISTORICO]->(h)
             MERGE (e)-[:ACIONOU]->(s)
         """)
-
-# Executando
 neo4j_uri = "bolt://localhost:7687"
 neo4j_user = "neo4j"
 neo4j_password = ""
@@ -84,3 +82,6 @@ neo4j_password = ""
 driver = Neo4jDriver(neo4j_uri, neo4j_user, neo4j_password)
 driver.criar_estrutura_inicial()
 driver.close()
+
+# MATCH (n) RETURN n LIMIT 100
+
