@@ -1,0 +1,81 @@
+!pip install py2neo pandas networkx scikit-learn matplotlib
+#CONECTANDO COM O NEO4J E IMPORTANDO DADOS:
+
+from py2neo import Graph
+import pandas as pd
+import networkx as nx
+import matplotlib.pyplot as plt
+
+graph = Graph("bolt://localhost:7687", auth=("neo4j", ""))
+
+query = """
+MATCH (a)-[r]->(b)
+RETURN a.id_usuario AS source, labels(a)[0] AS source_type, 
+       type(r) AS relationship, 
+       b.id_evento AS target, labels(b)[0] AS target_type
+"""
+
+df = graph.run(query).to_data_frame()
+df = df.dropna(subset=["source", "target"])  # Remove nulos
+
+# Criar grafo no NetworkX
+G = nx.from_pandas_edgelist(df, "source", "target", edge_attr="relationship", create_using=nx.DiGraph())
+# CENTRALIDADE
+
+# Grau de centralidade
+degree_centrality = nx.degree_centrality(G)
+print("Centralidade de Grau:", degree_centrality)
+
+# Betweeness Centrality
+betweenness = nx.betweenness_centrality(G)
+print("Centralidade de Intermediação:", betweenness)
+
+# PageRank
+pagerank = nx.pagerank(G)
+print("PageRank:", pagerank)
+
+# Visualização rápida
+nx.draw(G, with_labels=True, node_color='lightblue', edge_color='gray', node_size=1500, font_size=10)
+plt.show()
+ DETECÇÃO DE COMUNIDADES:
+python
+Copiar
+Editar
+from networkx.algorithms.community import girvan_newman
+
+comp = girvan_newman(G)
+communities = next(comp)
+print("Comunidades detectadas:", communities)
+#PREDIÇÃO DE LINKS]
+python
+Copiar
+Editar
+from networkx.algorithms.link_prediction import jaccard_coefficient
+
+# Lista de pares não conectados
+preds = list(jaccard_coefficient(G))
+
+# Ordena por maior probabilidade
+preds_sorted = sorted(preds, key=lambda x: x[2], reverse=True)
+for u, v, p in preds_sorted[:5]:
+    print(f"Probabilidade de novo link entre {u} e {v}: {p:.4f}")
+#CAMINHOS MAIS CURTOS:
+python
+Copiar
+Editar
+source = "u1"
+target = "ev1"
+
+try:
+    shortest_path = nx.shortest_path(G, source=source, target=target)
+    print(f"Caminho mais curto de {source} para {target}: {shortest_path}")
+except nx.NetworkXNoPath:
+    print("Sem caminho entre os nós.")
+#RANKING DOS NÓS (POR PageRank):
+python
+Copiar
+Editar
+ranking = sorted(pagerank.items(), key=lambda x: x[1], reverse=True)
+print("Ranking de Nós por PageRank:")
+for i, (node, score) in enumerate(ranking, 1):
+    print(f"{i}. {node}: {score:.4f}")
